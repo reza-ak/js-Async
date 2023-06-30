@@ -1,4 +1,6 @@
-const weather = new Weather('تهران', 'تهران');
+const storage = new Store();
+const weatherLocation = storage.getLocationData()
+const weather = new Weather(weatherLocation.city, weatherLocation.state);
 const ui = new UI();
 // weather.changeLocation('شیراز', 'فارس')
 
@@ -19,5 +21,6 @@ function changeLocation() {
   const city = document.getElementById('city').value;
   const state = document.getElementById('state').value;
   weather.changeLocation(city, state);
+  storage.setLocationData(city, state)
   getWeather();
 }
